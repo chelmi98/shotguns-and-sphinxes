@@ -6,6 +6,10 @@ class mob(object):
     def __init__(self,race,name,gender,maxhealth,baseattack):
         self.race=race
         self.name=name
+        if name=='none':
+            self.title='the '+race
+        else:
+            self.title=name
         self.gender=gender
         self.maxhealth=maxhealth
         self.health=maxhealth
@@ -16,22 +20,22 @@ class mob(object):
     def attack(self,target):
         if target.dead==False:
             if random.randint(1,3)==3:
-                print('You miss the '+target.race+'.')
+                print('You miss '+target.title+'.')
             else:
                 target.health-=self.baseattack
-                print('You hit the '+target.race+'.')
+                print('You hit '+target.title+'.')
         else:
-            print('The '+target.race+' is already dead.')
+            print(target.title+' is already dead.')
 
     def update(self):
         if self.health<0 and self.dead==False:
             self.health=0
             self.dead=True
-            print('The '+self.race+' is dead.')
+            print(self.title+' is dead.')
 
     def describe(self):
         if self.seen==False:
-            print('You see a '+self.race)
+            print('You see '+self.title+'.')
             self.seen=True
 
 you=mob('human','player','m',100,20)
