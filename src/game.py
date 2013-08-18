@@ -15,11 +15,11 @@ class mob(object):
 
     def attack(self,target):
         if target.dead==False:
-            if random.randint(1,2)==2:
+            if random.randint(1,3)==3:
+                print('You miss the '+target.race+'.')
+            else:
                 target.health-=self.baseattack
                 print('You hit the '+target.race+'.')
-            else:
-                print('You miss the '+target.race+'.')
         else:
             print('The '+target.race+' is already dead.')
 
@@ -44,9 +44,14 @@ def describe():
         i.describe()
 
 def tick(response):
+    global running
     response=response.lower()
     response=response.split(' ')
-    if response[0]=='attack':
+
+    if response[0]=='quit':
+        if confirm():
+            running=False
+    elif response[0]=='attack':
         you.attack(mobs[0])
         mobs[0].update()
     else:
@@ -63,8 +68,4 @@ while running:
     describe()
     print('What would you like to do?')
     response=raw_input('>>> ')
-    if response=='quit':
-        if confirm():
-            running=False
-    else:
-        tick(response)
+    tick(response)
