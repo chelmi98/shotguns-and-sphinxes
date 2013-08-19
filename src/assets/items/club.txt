@@ -1,0 +1,5 @@
+description=A heavy club made from a log.
+type=melee
+dmgtype=blunt
+damage=+2
+weight=8

@@ -1,2 +1,0 @@
-description=Your chipped and trusty sword.
-damage=+3

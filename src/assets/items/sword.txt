@@ -1,0 +1,5 @@
+description=Your chipped and trusty sword.
+type=melee
+dmgtype=sharp
+damage=+5
+weight=3
