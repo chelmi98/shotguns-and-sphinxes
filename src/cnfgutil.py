@@ -2,9 +2,9 @@ import os
 
 home=os.getcwd()
 
-def readFile():
-    os.chdir(home+'//assets//items')
-    tmp=open('sword.txt')
+def readFile(path,name):
+    os.chdir(home+path)
+    tmp=open(name)
     tmp2=tmp.readlines()
     tmp.close()
     tmp3={}
