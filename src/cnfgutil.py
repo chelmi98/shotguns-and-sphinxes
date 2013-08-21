@@ -22,6 +22,10 @@ def reaCnfg(path,name):
 
     for i in range(len(tmp2)):
         tmp2[i]=tmp2[i].strip()
-        tmp3[tmp2[i][:tmp2[i].index('=')]]=tmp2[i][tmp2[i].index('=')+1:]
+        try:
+            tmp3[tmp2[i][:tmp2[i].index('=')]]=int(tmp2[i][tmp2[i].index('=')+1:])
+        except:
+            tmp3[tmp2[i][:tmp2[i].index('=')]]=tmp2[i][tmp2[i].index('=')+1:]
+
 
     return tmp3

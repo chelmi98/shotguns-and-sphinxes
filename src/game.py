@@ -39,6 +39,12 @@ class mob(object):
             print('You see '+self.title+'.')
             self.seen=True
 
+class item(object):
+    def __init__(self,path,name):
+        stats=cnfgutil.reaCnfg(path,name)
+        self.dmg=stats['damage']
+        print(self.dmg)
+
 you=mob('human','player','m',100,20)
 
 mobs=[]
