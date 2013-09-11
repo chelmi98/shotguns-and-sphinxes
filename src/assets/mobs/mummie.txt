@@ -1,0 +1,10 @@
+description=A rotting corpse wrapped in filthy cloth strips stands unsteadily.
+name=none
+gender=none
+type=animal
+heath=50
+baseattack=5
+atktype=melee
+hitdesc=Its dusty nails scrape into your skin.
+missdesc=It claws at you and snarls.
+item=none
