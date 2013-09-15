@@ -1,0 +1,3 @@
+desc0=A heavy gold cup, engraved with scenes of battle.
+weight=2
+value=500

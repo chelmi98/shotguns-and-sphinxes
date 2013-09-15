@@ -1,10 +1,12 @@
-description=A rotting corpse wrapped in filthy cloth strips stands unsteadily.
+desc0=A rotting corpse wrapped in filthy cloth strips stands unsteadily.
+desc1=The mummie exhales a rattling breath and lurches toward you.
 name=none
 gender=none
 type=animal
-heath=50
-baseattack=5
+health=50
+baseatk=5
 atktype=melee
-hitdesc=Its dusty nails scrape into your skin.
-missdesc=It claws at you and snarls.
+range=4
+hitdesc0=Its dusty nails scrape into your skin.
+missdesc0=It claws at you and snarls.
 item=none
