@@ -1,5 +1,8 @@
-description=A heavy club made from a log.
-type=melee
+desc0=A heavy club made from a log.
+atktype=melee
+hitdesc0=You mightily smash your club into your foe.
+missdesc0=Your club hurtles through the air, but doesnt hit.
 dmgtype=blunt
 damage=+2
 weight=8
+value=20

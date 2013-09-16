@@ -1,5 +1,8 @@
-description=Your chipped and trusty sword.
-type=melee
+desc0=Your chipped and trusty sword.
+atktype=melee
+hitdesc0=Your sword slices though the air and lands home.
+missdesc0=You swing, but your sword misses the mark.
 dmgtype=sharp
 damage=+5
 weight=3
+value=80
