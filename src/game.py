@@ -20,26 +20,28 @@ class mob(object):
             except:
                 break
 
-        self.name = stats['name']
-        self.gender = stats['gender']
-        self.mobtype = stats['type']
-        self.health = stats['health']
-        self.atkbase = stats['baseatk']
-        self.atktype = stats['atktype']
-        self.atkrange = stats['range']
-        self.hitdesc = stats['hitdesc0']
-        self.missdesc = stats['missdesc0']
+    def describe(self):
+        print(self.desc[random.randint(0,len(self.desc)-1)])
+
+##class wep(object):
+##    def __init__(self,path,name):
+##        stats=cnfgutil.readCnfg(path,name)
+##        self.dmg=stats['damage']
+##        print(self.dmg)
+
+class room(object):
+    def __init__(self,contents):
+        self.contents=contents
+
+    def describe(self):
+        for i in self.contents:
+            i.describe()
 
 bob=mob('//assets//mobs','mummie.txt')
-
-class wep(object):
-    def __init__(self,path,name):
-        stats=cnfgutil.readCnfg(path,name)
-        self.dmg=stats['damage']
-        print(self.dmg)
+entry=room([bob])
 
 def describe():
-    pass
+    entry.describe()
 
 def tick(response):
     global running
