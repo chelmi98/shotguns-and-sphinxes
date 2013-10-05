@@ -1,0 +1,9 @@
+desc0=This gilded blade follows a half-moon curve to a wickedly sharp point. under the dust of ages it is definitely a king's weapon
+atktype=melee
+hitdesc0=Your sword slices though the air and lands home.
+missdesc0=You swing, but your sword misses the mark.
+hitchan=4+
+dmgtype=sharp
+damage=+9
+weight=3
+value=90
