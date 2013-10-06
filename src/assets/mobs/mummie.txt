@@ -1,5 +1,6 @@
 desc0=A rotting corpse wrapped in filthy cloth strips stands unsteadily.
 desc1=The mummie exhales a rattling breath and lurches toward you.
+deaddesc0=The mummie lies on the floor, limp and motionless.
 name=none
 gender=none
 type=animal
