@@ -1,13 +1,6 @@
 import random
 from cnfgutil import *
 
-title=readFile('//assets','title.txt',False)
-for i in title:
-    print(i)
-print('')
-
-running = True
-
 def confirm():
     print('Are you sure?')
     if raw_input('>>> ')[0] in ('y','Y'):
@@ -16,13 +9,15 @@ def confirm():
         return(False)
 
 class player(object):
-    def __init__(self):
-        self.hp=100
-        self.mp=100
+    def __init__(self,location):
+        self.hp=100 #hit points
+        self.mp=100 #mana points
         self.str=5 #used for damage and brute strength stuff
         self.dex=5 #used for determining if hits land, and speed
         self.int=5 #determines magic skill
         self.backpack=[]
+        self.equiped=[]
+        self.location=location
 
     def update(self):
         if self.hp<=0:
@@ -75,13 +70,8 @@ class room(object):
         for i in self.contents:
             i.describe()
 
-you=player()
-stuff=[]
-stuff+=[mob('//assets//mobs','mummie.txt')]
-entry=room(stuff)
-
 def describe():
-    entry.describe()
+    you.location.describe()
     print('')
 
 def tick(response):
@@ -96,14 +86,25 @@ def tick(response):
             running=False
     elif response[0]=='attack':
         timetick=True
-        you.attack(entry.contents[0])
+        you.attack(you.location.contents[0])
     else:
         print(response[0]+' isnt a command.')
 
     if timetick:
-        entry.contents[0].update()
-        entry.contents[0].attack(you)
+        you.location.contents[0].update()
+        you.location.contents[0].attack(you)
         you.update()
+
+running = True
+stuff=[]
+stuff+=[mob('//assets//mobs','mummie.txt')]
+entry=room(stuff)
+you=player(entry)
+
+title=readFile('//assets','title.txt',False)
+for i in title:
+    print(i)
+print('')
 
 while running:
     describe()
