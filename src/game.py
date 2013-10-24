@@ -1,7 +1,7 @@
 import random
-import cnfgutil
+from cnfgutil import *
 
-title=cnfgutil.readFile('//assets','title.txt',False)
+title=readFile('//assets','title.txt',False)
 for i in title:
     print(i)
 print('')
@@ -15,18 +15,9 @@ def confirm():
     else:
         return(False)
 
-def getDesc(prefix,items):
-    desc=[]; c=0
-    while True:
-        try:
-            desc+=[items[prefix+str(c)]]
-            c+=1
-        except:
-            return desc
-
 class player(object):
     def __init__(self):
-        self.health=100
+        self.hp=100
         self.mp=100
         self.str=5 #used for damage and brute strength stuff
         self.dex=5 #used for determining if hits land, and speed
@@ -34,7 +25,7 @@ class player(object):
         self.backpack=[]
 
     def update(self):
-        if self.health<=0:
+        if self.hp<=0:
             print('You died.')
             input('press enter to close the program')
             exit()
@@ -42,7 +33,7 @@ class player(object):
     def attack(self,target):
         if not target.dead:
             if random.randint(0,2)==0:
-                target.health-=10
+                target.hp-=10
                 print('You hit for '+str(10)+' damage.')
             else:
                 print('You miss.')
@@ -51,21 +42,21 @@ class player(object):
 
 class mob(object):
     def __init__(self,path,name):
-        stats=cnfgutil.readCnfg(path,name)
+        stats=readCnfg(path,name)
 
         self.desc=getDesc('desc',stats)
         self.deaddesc=getDesc('deaddesc',stats)
-        self.health=stats['health']
+        self.hp=stats['health']
         self.dead=False
 
     def update(self):
-        if self.health<=0:
+        if self.hp<=0:
             self.dead=True
 
     def attack(self,target):
         if not self.dead:
             if random.randint(0,2)==0:
-                target.health-=10
+                target.hp-=10
                 print('It hits for '+str(10)+' damage.')
             else:
                 print('It misses.')

@@ -1,9 +1,9 @@
-import os
+from os import getcwd , chdir
 
-home = os.getcwd()
+home = getcwd()
 
 def readFile (path, name, strip = True):
-    os.chdir(home + path)
+    chdir(home + path)
     tmp = open(name)
     tmp2 = tmp.readlines()
     tmp.close()
@@ -18,7 +18,7 @@ def readFile (path, name, strip = True):
     return tmp2
 
 def readCnfg (path, name):
-    os.chdir(home + path)
+    chdir(home + path)
     tmp = open(name)
     tmp2 = tmp.readlines()
     tmp.close()
@@ -32,3 +32,12 @@ def readCnfg (path, name):
             tmp3[tmp2[i][:tmp2[i].index('=')]] = tmp2[i][tmp2[i].index('=') + 1:]
 
     return tmp3
+
+def getDesc(prefix,items):
+    desc=[]; c=0
+    while True:
+        try:
+            desc+=[items[prefix+str(c)]]
+            c+=1
+        except:
+            return desc
