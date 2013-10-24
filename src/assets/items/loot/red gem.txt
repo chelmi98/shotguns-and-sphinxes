@@ -1,0 +1,4 @@
+desc0=A small gem the size of a grape. It glints bloodred.
+desc1=A many faceted red gem, possibly torn from a crown.
+weight=1
+value=200

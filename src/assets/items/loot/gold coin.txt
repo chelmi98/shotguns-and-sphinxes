@@ -1,0 +1,6 @@
+desc0=A thick gold coin. It gleams in the light.
+desc1=A crudely made coin of solid gold.
+desc2=An small ancient coin of solid gold.
+desc3=A coin made of gold, stamped with a face.
+weight=0
+value=10
