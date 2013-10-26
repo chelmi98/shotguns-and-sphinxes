@@ -1,13 +1,6 @@
 import random
 from cnfgutil import *
 
-def confirm():
-    print('Are you sure?')
-    if raw_input('>>> ')[0] in ('y','Y'):
-        return(True)
-    else:
-        return(False)
-
 class player(object):
     def __init__(self,location):
         self.hp=100 #hit points
@@ -70,6 +63,13 @@ class room(object):
         for i in self.contents:
             i.describe()
 
+def confirm():
+    print('Are you sure?')
+    if raw_input('>>> ')[0] in ('y','Y'):
+        return(True)
+    else:
+        return(False)
+
 def describe():
     you.location.describe()
     print('')
@@ -101,7 +101,7 @@ stuff+=[mob('//assets//mobs','mummie.txt')]
 entry=room(stuff)
 you=player(entry)
 
-title=readFile('//assets','title.txt',False)
+title=readFile('//assets//misc','title.txt',False)
 for i in title:
     print(i)
 print('')
