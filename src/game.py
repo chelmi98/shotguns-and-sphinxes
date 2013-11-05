@@ -1,5 +1,8 @@
 import random
 from cnfgutil import *
+from os import getcwd , chdir
+
+home = getcwd()
 
 class player(object):
     def __init__(self,location):
@@ -60,8 +63,7 @@ class room(object):
         self.contents=contents
 
     def describe(self):
-        for i in self.contents:
-            i.describe()
+        pass
 
 def confirm():
     print('Are you sure?')
@@ -72,6 +74,8 @@ def confirm():
 
 def describe():
     you.location.describe()
+    for i in you.location.contents:
+            i.describe()
     print('')
 
 def tick(response):
@@ -97,11 +101,11 @@ def tick(response):
 
 running = True
 stuff=[]
-stuff+=[mob('//assets//mobs','mummie.txt')]
+stuff+=[mob(home+'//assets//mobs','mummie.txt')]
 entry=room(stuff)
 you=player(entry)
 
-title=readFile('//assets//misc','title.txt',False)
+title=readFile(home+'//assets//misc','title.txt',False)
 for i in title:
     print(i)
 print('')

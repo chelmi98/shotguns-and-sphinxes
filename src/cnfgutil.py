@@ -1,9 +1,8 @@
-from os import getcwd , chdir
+from os import chdir
 
-home = getcwd()
-
+#reads a file line by line into a list
 def readFile (path, name, strip = True):
-    chdir(home + path)
+    chdir(path)
     tmp = open(name)
     tmp2 = tmp.readlines()
     tmp.close()
@@ -17,8 +16,9 @@ def readFile (path, name, strip = True):
 
     return tmp2
 
+#reads a file with assigned values to a dictionary
 def readCnfg (path, name):
-    chdir(home + path)
+    chdir(path)
     tmp = open(name)
     tmp2 = tmp.readlines()
     tmp.close()
