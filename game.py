@@ -1,10 +1,10 @@
+import json
 import random
+import sys
 from cnfgutil import *
 from os import getcwd , chdir
 
-home = getcwd()
-
-class player(object):
+class player():
     def __init__(self,location):
         self.hp=100 #hit points
         self.mp=100 #mana points
@@ -16,14 +16,14 @@ class player(object):
         self.location=location
 
     def update(self):
-        if self.hp<=0:
+        if self.hp <= 0:
             print('You died.')
-            input('press enter to close the program')
-            exit()
+            input('Press enter to quit.')
+            sys.exit()
 
     def attack(self,target):
         if not target.dead:
-            if random.randint(0,2)==0:
+            if random.randint(0, 2) == 0:
                 target.hp-=10
                 print('You hit for '+str(10)+' damage.')
             else:
@@ -31,7 +31,8 @@ class player(object):
         else:
             print('The target is dead.')
 
-class mob(object):
+
+class mob():
     def __init__(self,path,name):
         stats=readCnfg(path,name)
 
@@ -46,7 +47,7 @@ class mob(object):
 
     def attack(self,target):
         if not self.dead:
-            if random.randint(0,2)==0:
+            if random.randint(0, 2) == 0:
                 target.hp-=10
                 print('It hits for '+str(10)+' damage.')
             else:
@@ -58,12 +59,14 @@ class mob(object):
         else:
             print self.deaddesc[random.randint(0,len(self.deaddesc)-1)],
 
-class room(object):
+
+class room():
     def __init__(self,contents):
         self.contents=contents
 
     def describe(self):
         pass
+
 
 def confirm():
     print('Are you sure?')
@@ -72,46 +75,52 @@ def confirm():
     else:
         return(False)
 
+
 def describe():
     you.location.describe()
     for i in you.location.contents:
             i.describe()
     print('')
 
+
 def tick(response):
     global running
-    response=response.lower()
-    response=response.split(' ')
+    response = response.lower()
+    response = response.split(' ')
 
-    timetick=False
+    timetick = False
 
-    if response[0]=='quit':
+    if response[0] == 'quit':
         if confirm():
-            running=False
-    elif response[0]=='attack':
-        timetick=True
+            running = False
+    elif response[0] == 'attack':
+        timetick = True
         you.attack(you.location.contents[0])
     else:
-        print(response[0]+' isnt a command.')
+        print(response[0] + ' isnt a command.')
 
     if timetick:
         you.location.contents[0].update()
         you.location.contents[0].attack(you)
         you.update()
 
-running = True
-stuff=[]
-stuff+=[mob(home+'//assets//mobs','mummie.txt')]
-entry=room(stuff)
-you=player(entry)
 
-title=readFile(home+'//assets//misc','title.txt',False)
-for i in title:
-    print(i)
-print('')
+if __name__ == '__main__':
+    home = getcwd()
+    stuff = []
+    stuff += [mob(home+'//assets//mobs','mummie.txt')]
+    entry = room(stuff)
+    you = player(entry)
 
-while running:
-    describe()
-    print('What would you like to do?')
-    response=raw_input('>>> ')
-    tick(response)
+    # prints title
+    title = readFile(home+'//assets//misc', 'title.txt', False)
+    for i in title:
+        print(i)
+    print('')
+
+    running = True
+    while running:
+        describe()
+        print('What would you like to do?')
+        response=raw_input('>>> ')
+        tick(response)
