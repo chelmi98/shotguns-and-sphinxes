@@ -1,5 +1,0 @@
-desc0=mafek shard
-desc1=This unnatural rock thrums and glows in your hand. Its pale green light sends tingles up your spine.
-weight=3
-value=50,000
-boost=+2 to stat of choice

@@ -1,0 +1,11 @@
+{
+	"weight": 3,
+	"value": 10000,
+	"descriptions": [
+		"This unnatural rock thrums and glows in your hand. Its pale green light sends tingles up your spine."
+	]
+	"use": {
+		"uses": 1
+		"action": "lvlStat"
+	}
+}
