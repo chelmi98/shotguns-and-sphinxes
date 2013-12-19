@@ -1,0 +1,28 @@
+{
+	"type": "animal",
+	"name": "none",
+	"gender": "male",
+	"health": 50,
+	"attack": {
+		"type": "meelee",
+		"basedmg": 5,
+		"range": 4,
+		"descriptions": {
+			"hit": [
+				"Its dusty nails scrape into your skin."
+			]
+			"miss": [
+				"It claws at you and snarls."
+			]
+		}
+	}
+	"descriptions": {
+		"alive": [
+			"A rotting corpse wrapped in filthy cloth strips stands unsteadily.",
+			"The mummie exhales a rattling breath and lurches toward you."
+		]
+		"dead":[
+			"The mummie lies on the floor, limp and motionless."
+		]
+	}
+}
