@@ -23,9 +23,10 @@ class player():
 
     def attack(self,target):
         if not target.dead:
+            target.target = self
             if random.randint(0, 2) == 0:
                 target.hp-=10
-                print('You hit for '+str(10)+' damage.')
+                print('You hit for ' + str(10) + ' damage.')
             else:
                 print('You miss.')
         else:
@@ -38,13 +39,23 @@ class mob():
 
         self.desc = getDesc('desc', stats)
         self.deaddesc = getDesc('deaddesc', stats)
+        self.described = False
+
         self.hp = stats['health']
         self.inventory = []
         self.dead = False
 
+        self.target = None
+
     def update(self):
-        if self.hp <= 0:
-            self.dead=True
+        if not self.dead:
+            if self.hp <= 0:
+                self.dead = True
+                self.described = False
+            else:
+                # AI stuff goes here
+                if self.target:
+                    self.attack(self.target)
 
     def attack(self, target):
         if not self.dead:
@@ -54,11 +65,17 @@ class mob():
             else:
                 print('It misses.')
 
-    def describe(self):
+    def describe(self, passive = True):
+        if passive:
+            if not self.described:
+                self.described = True
+            else:
+                return
+
         if not self.dead:
-            print self.desc[random.randint(0, len(self.desc) - 1)],
+            print self.desc[random.randint(0, len(self.desc) - 1)]
         else:
-            print self.deaddesc[random.randint(0, len(self.deaddesc) - 1)],
+            print self.deaddesc[random.randint(0, len(self.deaddesc) - 1)]
 
 
 class room():
@@ -81,7 +98,6 @@ def describe():
     you.location.describe()
     for i in you.location.contents:
             i.describe()
-    print('')
 
 
 def tick(response):
@@ -97,12 +113,16 @@ def tick(response):
     elif response[0] == 'attack':
         timetick = True
         you.attack(you.location.contents[0])
+    elif response[0] == 'wait':
+        timetick = True
+        print('You wait for a moment before continuing.')
     else:
         print(response[0] + ' isnt a command.')
 
     if timetick:
-        you.location.contents[0].update()
-        you.location.contents[0].attack(you)
+        for i in you.location.contents:
+            i.update()
+
         you.update()
 
 
