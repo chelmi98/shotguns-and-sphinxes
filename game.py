@@ -5,15 +5,15 @@ from cnfgutil import *
 from os import getcwd , chdir
 
 class player():
-    def __init__(self,location):
-        self.hp=100 #hit points
-        self.mp=100 #mana points
-        self.str=5 #used for damage and brute strength stuff
-        self.dex=5 #used for determining if hits land, and speed
-        self.int=5 #determines magic skill
-        self.backpack=[]
-        self.equiped=[]
-        self.location=location
+    def __init__(self, location):
+        self.hp = 100 # hit points
+        self.mp = 100 # mana points
+        self.STR = 5 # used for damage and brute strength stuff
+        self.DEX = 5 # used for determining if hits land, and speed
+        self.INT = 5 # determines magic skill
+        self.inventory = []
+        self.equiped = []
+        self.location = location
 
     def update(self):
         if self.hp <= 0:
@@ -33,31 +33,32 @@ class player():
 
 
 class mob():
-    def __init__(self,path,name):
-        stats=readCnfg(path,name)
+    def __init__(self, path, name):
+        stats = readCnfg(path, name)
 
-        self.desc=getDesc('desc',stats)
-        self.deaddesc=getDesc('deaddesc',stats)
-        self.hp=stats['health']
-        self.dead=False
+        self.desc = getDesc('desc', stats)
+        self.deaddesc = getDesc('deaddesc', stats)
+        self.hp = stats['health']
+        self.inventory = []
+        self.dead = False
 
     def update(self):
-        if self.hp<=0:
+        if self.hp <= 0:
             self.dead=True
 
-    def attack(self,target):
+    def attack(self, target):
         if not self.dead:
             if random.randint(0, 2) == 0:
-                target.hp-=10
-                print('It hits for '+str(10)+' damage.')
+                target.hp -= 10
+                print('It hits for ' + str(10) + ' damage.')
             else:
                 print('It misses.')
 
     def describe(self):
         if not self.dead:
-            print self.desc[random.randint(0,len(self.desc)-1)],
+            print self.desc[random.randint(0, len(self.desc) - 1)],
         else:
-            print self.deaddesc[random.randint(0,len(self.deaddesc)-1)],
+            print self.deaddesc[random.randint(0, len(self.deaddesc) - 1)],
 
 
 class room():
