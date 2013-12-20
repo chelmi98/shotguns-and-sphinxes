@@ -2,7 +2,7 @@ import json
 import random
 import sys
 from cnfgutil import *
-from os import getcwd , chdir
+from os import getcwd
 
 class player():
     def __init__(self, location):
@@ -35,13 +35,14 @@ class player():
 
 class mob():
     def __init__(self, path, name):
-        stats = readCnfg(path, name)
+        stats = loadJson(path, name)
 
-        self.desc = getDesc('desc', stats)
-        self.deaddesc = getDesc('deaddesc', stats)
+        self.desc = stats['descriptions']['alive']
+        self.deaddesc = stats['descriptions']['dead']
         self.described = False
 
         self.hp = stats['health']
+        self.basedmg = stats['attack']['basedmg']
         self.inventory = []
         self.dead = False
 
@@ -60,8 +61,8 @@ class mob():
     def attack(self, target):
         if not self.dead:
             if random.randint(0, 2) == 0:
-                target.hp -= 10
-                print('It hits for ' + str(10) + ' damage.')
+                target.hp -= self.basedmg
+                print('It hits for %i damage.' % self.basedmg)
             else:
                 print('It misses.')
 
@@ -84,6 +85,13 @@ class room():
 
     def describe(self):
         pass
+
+
+def loadJson(path, name):
+    f = open(path + '\\' + name)
+    j = json.load(f)
+    f.close()
+    return j
 
 
 def confirm():
@@ -129,7 +137,7 @@ def tick(response):
 if __name__ == '__main__':
     home = getcwd()
     stuff = []
-    stuff += [mob(home+'//assets//mobs','mummie.txt')]
+    stuff += [mob(home+'//assets//mobs', 'mummie.json')]
     entry = room(stuff)
     you = player(entry)
 
