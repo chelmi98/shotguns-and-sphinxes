@@ -1,7 +1,6 @@
 import json
 import random
 import sys
-from cnfgutil import *
 from os import getcwd
 
 class player():
@@ -85,6 +84,21 @@ class room():
 
     def describe(self):
         pass
+
+
+def readFile (path, name, strip = True):
+    tmp = open(path + '\\' + name)
+    tmp2 = tmp.readlines()
+    tmp.close()
+
+    if strip:
+        for i in range(len(tmp2)):
+            tmp2[i] = tmp2[i].strip()
+    else:
+        for i in range(len(tmp2)):
+            tmp2[i] = tmp2[i].rstrip()
+
+    return tmp2
 
 
 def loadJson(path, name):
