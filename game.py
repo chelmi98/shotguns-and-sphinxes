@@ -151,7 +151,7 @@ def tick(response):
 if __name__ == '__main__':
     home = getcwd()
     stuff = []
-    stuff += [mob(home+'//assets//mobs', 'mummie.json')]
+    stuff += [mob(home+'//assets//mobs', 'mummy.json')]
     entry = room(stuff)
     you = player(entry)
 

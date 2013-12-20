@@ -1,0 +1,27 @@
+{
+	"type": "animal",
+	"name": "none",
+	"gender": "male",
+	"health": 100,
+	"attack": {
+		"type": "melee",
+		"basedmg": 20,
+		"range": 2,
+		"descriptions": {
+			"hit": [
+				"Its mandibles crush down on you, and you can feel the poison begin to burn and sting."
+			],
+			"miss": [
+				"The beetle's jaws slice through the air and snap shut violently."
+			]
+		}
+	},
+	"descriptions": {
+		"alive": [
+			"The giant beetle's plating gleams. Its jaws snap open and shut, poison dripping from them."
+		],
+		"dead":[
+			"The shell of the giant beetle clatters hollowly to the ground, the life gone from it."
+		]
+	}
+}

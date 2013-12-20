@@ -4,7 +4,7 @@
 	"gender": "male",
 	"health": 50,
 	"attack": {
-		"type": "meelee",
+		"type": "melee",
 		"basedmg": 5,
 		"range": 4,
 		"descriptions": {
@@ -19,10 +19,10 @@
 	"descriptions": {
 		"alive": [
 			"A rotting corpse wrapped in filthy cloth strips stands unsteadily.",
-			"The mummie exhales a rattling breath and lurches toward you."
+			"The mummy exhales a rattling breath and lurches toward you."
 		],
 		"dead":[
-			"The mummie lies on the floor, limp and motionless."
+			"The mummy lies on the floor, limp and motionless."
 		]
 	}
 }

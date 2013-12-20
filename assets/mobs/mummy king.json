@@ -1,0 +1,28 @@
+{
+	"type": "boss",
+	"name": "none",
+	"gender": "male",
+	"health": 75,
+	"attack": {
+		"type": "melee",
+		"basedmg": 15,
+		"range": 4,
+		"descriptions": {
+			"hit": [
+				"Its chipped blade digs into your side."
+			],
+			"miss": [
+				"It lets loose a growl as it sword goes wide of you"
+			]
+		}
+	},
+	"descriptions": {
+		"alive": [
+			"A rotting corpse stands before you, heavy with the stench of ancient preservatives. Even in death it has a certain dignity about it.",
+			"The mummy exhales a rattling breath and lurches toward you, a golden sickle-sword clutched in his hand."
+		],
+		"dead":[
+			"The mummy lies on the floor, limp and motionless."
+		]
+	}
+}
